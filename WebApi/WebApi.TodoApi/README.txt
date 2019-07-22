@@ -11,7 +11,8 @@
 8. Test the GetTodoItems method
 Using POSTMAN
 
-
 9. Add a Create method, POST method
 10. Add a PutTodoItem method
 11. Add a DeleteTodoItem method
+
+12. Call the API with jQuery and test on web
