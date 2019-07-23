@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29102.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Lesson1.TodoApi", "WebApi.Lesson1.TodoApi.csproj", "{049918F8-B522-4456-BC4D-EDA86CFDD751}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Lesson2.MongoDB.BooksApi", "..\WebApi.Lesson2.MongoDB.BooksApi\WebApi.Lesson2.MongoDB.BooksApi.csproj", "{61240685-69D3-411F-983D-5DC76630B298}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{049918F8-B522-4456-BC4D-EDA86CFDD751}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{049918F8-B522-4456-BC4D-EDA86CFDD751}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{049918F8-B522-4456-BC4D-EDA86CFDD751}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{049918F8-B522-4456-BC4D-EDA86CFDD751}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61240685-69D3-411F-983D-5DC76630B298}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61240685-69D3-411F-983D-5DC76630B298}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61240685-69D3-411F-983D-5DC76630B298}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61240685-69D3-411F-983D-5DC76630B298}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {423EE40E-022F-4E88-AE35-ECA3558D1B62}
+	EndGlobalSection
+EndGlobal
