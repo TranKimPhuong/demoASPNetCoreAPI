@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Lesson1.TodoApi", "W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Lesson2.MongoDB.BooksApi", "WebApi.Lesson2.MongoDB.BooksApi\WebApi.Lesson2.MongoDB.BooksApi.csproj", "{1335EEDC-C92F-4227-9FF5-98A264D983F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Lesson3.Swagger.TodoApi", "WebApi.Lesson3.SwaggerAndNSwag.TodoApi\WebApi.Lesson3.Swagger.TodoApi.csproj", "{AA1C0F07-97B8-4757-BD09-530491272007}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Lesson3.Swagger.TodoApi", "WebApi.Lesson3.Swagger.TodoApi\WebApi.Lesson3.Swagger.TodoApi.csproj", "{CD2B31F2-7EF3-40EA-9242-A3D0D121B8C4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{1335EEDC-C92F-4227-9FF5-98A264D983F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1335EEDC-C92F-4227-9FF5-98A264D983F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1335EEDC-C92F-4227-9FF5-98A264D983F4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AA1C0F07-97B8-4757-BD09-530491272007}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AA1C0F07-97B8-4757-BD09-530491272007}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AA1C0F07-97B8-4757-BD09-530491272007}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AA1C0F07-97B8-4757-BD09-530491272007}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD2B31F2-7EF3-40EA-9242-A3D0D121B8C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD2B31F2-7EF3-40EA-9242-A3D0D121B8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD2B31F2-7EF3-40EA-9242-A3D0D121B8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD2B31F2-7EF3-40EA-9242-A3D0D121B8C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
