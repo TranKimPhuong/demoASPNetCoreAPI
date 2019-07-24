@@ -14,9 +14,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.OpenApi.Models;
-using WebApi.Lesson3.SwaggerAndNSwag.TodoApi.Models;
+using WebApi.Lesson3.Swagger.TodoApi.Models;
 
-namespace WebApi.Lesson3.SwaggerAndNSwag.TodoApi
+namespace WebApi.Lesson3.Swagger.TodoApi
 {
     public class Startup
     {

@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Lesson1.TodoApi", "W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Lesson2.MongoDB.BooksApi", "WebApi.Lesson2.MongoDB.BooksApi\WebApi.Lesson2.MongoDB.BooksApi.csproj", "{1335EEDC-C92F-4227-9FF5-98A264D983F4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Lesson3.SwaggerAndNSwag.TodoApi", "WebApi.Lesson3.SwaggerAndNSwag.TodoApi\WebApi.Lesson3.SwaggerAndNSwag.TodoApi.csproj", "{AA1C0F07-97B8-4757-BD09-530491272007}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Lesson3.Swagger.TodoApi", "WebApi.Lesson3.SwaggerAndNSwag.TodoApi\WebApi.Lesson3.Swagger.TodoApi.csproj", "{AA1C0F07-97B8-4757-BD09-530491272007}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

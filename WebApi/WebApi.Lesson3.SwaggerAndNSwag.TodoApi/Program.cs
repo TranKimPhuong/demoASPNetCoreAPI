@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
 
-namespace WebApi.Lesson3.SwaggerAndNSwag.TodoApi
+namespace WebApi.Lesson3.Swagger.TodoApi
 {
     public class Program
     {

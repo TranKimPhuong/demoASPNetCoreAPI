@@ -1,14 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
-using WebApi.Lesson3.SwaggerAndNSwag.TodoApi.Models;
+using WebApi.Lesson3.Swagger.TodoApi.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
-namespace WebApi.Lesson3.SwaggerAndNSwag.TodoApi.Controllers
+namespace WebApi.Lesson3.Swagger.TodoApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

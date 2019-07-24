@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApi.Lesson3.SwaggerAndNSwag.TodoApi.Controllers
+namespace WebApi.Lesson3.Swagger.TodoApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

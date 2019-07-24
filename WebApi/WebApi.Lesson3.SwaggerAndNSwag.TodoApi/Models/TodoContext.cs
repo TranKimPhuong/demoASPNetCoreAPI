@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace WebApi.Lesson3.SwaggerAndNSwag.TodoApi.Models
+namespace WebApi.Lesson3.Swagger.TodoApi.Models
 {
     public class TodoContext : DbContext
     {

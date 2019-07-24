@@ -17,7 +17,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "WebApi.Lesson3.SwaggerAndNSwag.TodoApi": {
+    "WebApi.Lesson3.Swagger.TodoApi": {
       "commandName": "Project",
       "launchBrowser": true,
       "launchUrl": "api/values",
