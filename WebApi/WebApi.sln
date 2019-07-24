@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Lesson2.MongoDB.Book
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.Lesson3.Swagger.TodoApi", "WebApi.Lesson3.Swagger.TodoApi\WebApi.Lesson3.Swagger.TodoApi.csproj", "{CD2B31F2-7EF3-40EA-9242-A3D0D121B8C4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Lesson4.NSwag.TodoApi", "WebApi.Lesson4.NSwag.TodoApi\WebApi.Lesson4.NSwag.TodoApi.csproj", "{3F3ED4DA-E2C3-49B6-BB10-7951522291B0}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{CD2B31F2-7EF3-40EA-9242-A3D0D121B8C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CD2B31F2-7EF3-40EA-9242-A3D0D121B8C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CD2B31F2-7EF3-40EA-9242-A3D0D121B8C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F3ED4DA-E2C3-49B6-BB10-7951522291B0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F3ED4DA-E2C3-49B6-BB10-7951522291B0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F3ED4DA-E2C3-49B6-BB10-7951522291B0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F3ED4DA-E2C3-49B6-BB10-7951522291B0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
