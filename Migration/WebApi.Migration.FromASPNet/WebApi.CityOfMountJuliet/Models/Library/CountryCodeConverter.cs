@@ -10,7 +10,7 @@ namespace WebApi.CityOfMountJuliet.Models.Library
 {
     public sealed class CountryCodeConverter
     {
-        private readonly IHostingEnvironment _hostingEnvironment;
+        //private readonly IHostingEnvironment _hostingEnvironment;
         [Serializable]
         [XmlType(TypeName = "CountryInfo")]
         public class CountryInfo
@@ -24,7 +24,7 @@ namespace WebApi.CityOfMountJuliet.Models.Library
 
         private CountryCodeConverter()
         {
-            var path = Path.Combine(_hostingEnvironment.ContentRootPath, "~/XMLs/CountryCode.xml");
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "~/XMLs/CountryCode.xml");
             if (!File.Exists(path))
             {
                 throw new Exception("CountryCodeConverter: Can not find country code dictionary file.");

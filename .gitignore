@@ -1,3 +1,4 @@
 bin
 obj
 .vs
+/azure-key-vault-asp-net-core-master

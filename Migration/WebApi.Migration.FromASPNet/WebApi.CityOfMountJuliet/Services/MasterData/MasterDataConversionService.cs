@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using log4net;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Configuration;
 using WebApi.CityOfMountJuliet.Models.Data.Provider;
 using WebApi.CityOfMountJuliet.Models.Library;
 using WebApi.CommonCore.Helper;
@@ -19,10 +20,12 @@ namespace WebApi.CityOfMountJuliet.Services.MasterData
     {
         static ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly PsTool _psTool;
+        private IConfiguration _configuration { get; set; }
 
-        internal MasterDataConversionService(PsTool psTool)
+        internal MasterDataConversionService(PsTool psTool, IConfiguration configuration)
         {
             _psTool = psTool;
+            _configuration = configuration;
         }
         internal ActionResult<string> ProcessHttpRequest(InputFileProperties inputFile)
         {
@@ -41,7 +44,7 @@ namespace WebApi.CityOfMountJuliet.Services.MasterData
                 if (errorList.Any())
                     return errorList.ToString();
 
-                var encryptedData = AESHelper.EncryptAES(sb.ToString(), Vault.Current.AESKeyBLOB);
+                var encryptedData = AESHelper.EncryptAES(sb.ToString(), _configuration["AESKeyBLOB"]);
             }
             catch (Exception e)
             {
@@ -73,12 +76,16 @@ namespace WebApi.CityOfMountJuliet.Services.MasterData
 
         private byte[] GetByteFile(IFormFile file, bool isGetFromBlob, string containerName, string blobName)
         {
-            var decryptKey = Vault.Current.AESKeyBLOB;
+            var decryptKey = _configuration["AESKeyBLOB"];
 
             if (isGetFromBlob)
             {
-                var storageConnString = Vault.Current.StorageConnectionString;
-                return BlobHelper.DownloadFileToArrayByte(storageConnString, containerName, blobName, decryptKey);
+                var storageAccountNameShared = _configuration["StorageAccountNameShared"];
+                var storageAccountKeyShared = _configuration["StorageAccountKeyShared"];
+                var aESSecretKey = _configuration["AESSecretKey"];
+                var storageSharedConnectionString = $"DefaultEndpointsProtocol=https;AccountName={storageAccountNameShared};AccountKey={AESHelper.DescryptAES(storageAccountKeyShared, aESSecretKey)}";
+
+                return BlobHelper.DownloadFileToArrayByte(storageSharedConnectionString, containerName, blobName, decryptKey);
             }
             byte[] fileContent = null;
 

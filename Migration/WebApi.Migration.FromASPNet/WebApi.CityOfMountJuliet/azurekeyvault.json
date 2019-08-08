@@ -1,0 +1,7 @@
+{
+  "azureKeyVault": {
+    "vault": "ps-test-sea-keyvault",
+    "clientId": "978bce15-4011-4d64-89da-a65d32b0c71d",
+    "clientSecret": "NXQUA5gauiK2FatXNKS82JOucTrQz67LwgH3CnjGNyc="
+  }
+}

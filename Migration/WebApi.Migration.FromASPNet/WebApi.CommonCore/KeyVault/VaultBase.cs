@@ -25,7 +25,7 @@ namespace WebApi.CommonCore.KeyVault
         public VaultBase()
         {
             VaultClient = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(GetToken));
-            AzureVaultAddress = $"https://{ConfigHelper.GetString("KeyVault.VaultName")}.vault.azure.net/"; ;
+            AzureVaultAddress = $"https://{ConfigHelper.GetString("KeyVault.VaultName")}.vault.azure.net/"; ;//có rồi
         }
 
         #endregion

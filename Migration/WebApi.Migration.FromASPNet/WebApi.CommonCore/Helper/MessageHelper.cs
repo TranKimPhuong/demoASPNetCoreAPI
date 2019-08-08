@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Microsoft.Azure.ServiceBus;
-
+using Microsoft.Extensions.Configuration;
 using BrokeredMessageProperties = System.Collections.Generic.Dictionary<string, string>;
 
 namespace WebApi.CommonCore.Helper
@@ -52,13 +52,13 @@ namespace WebApi.CommonCore.Helper
                 throw ex;
             }
         }
-        public static void SendMessageToServiceBus(string queueName, BrokeredMessageProperties messageProperties)
+        public static void SendMessageToServiceBus(string queueName, BrokeredMessageProperties messageProperties, IConfiguration configuration)
         {
             try
             {
                 var message = messageProperties.ToBrokeredMessage();
 
-                QueueClient client = new QueueClient(KeyVault.Vault.Current.ServiceBusConnectionString, queueName);
+                QueueClient client = new QueueClient(configuration["ServiceBusConnectionString"], queueName);
 
                 client.SendAsync(message);
             }

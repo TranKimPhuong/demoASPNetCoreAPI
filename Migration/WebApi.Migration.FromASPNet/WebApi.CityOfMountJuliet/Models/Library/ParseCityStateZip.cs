@@ -10,7 +10,7 @@ namespace WebApi.CityOfMountJuliet.Models.Library
 {
     internal static class ParseCityStateZip
     {
-        private static IHostingEnvironment _hostingEnvironment;
+        //private static IHostingEnvironment _hostingEnvironment;
         static ParseCityStateZip()
         {
             provinces = GetProvinces();
@@ -22,7 +22,7 @@ namespace WebApi.CityOfMountJuliet.Models.Library
             List<Province> result;
             //TODO: test _hostingEnvironment.ContentRootPath
 
-            string value = File.ReadAllText(Path.Combine(_hostingEnvironment.ContentRootPath, "~/XMLs/provinces.json"));
+            string value = File.ReadAllText(Path.Combine(Directory.GetCurrentDirectory(), "~/XMLs/provinces.json"));
 
             result = JsonConvert.DeserializeObject<List<Province>>(value);
 

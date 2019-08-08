@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using log4net;
+using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
@@ -11,12 +12,19 @@ namespace WebApi.CommonCore.Emails
     public class EmailSender
     {
         private readonly ILog Logger;
+        private readonly IConfiguration _configuration;
         private readonly SendGridClient sendGridClient;
         private static Lazy<EmailSender> _lazy = new Lazy<EmailSender>(() => new EmailSender());
         public static EmailSender Current => _lazy.Value;
+
+        //TODO: test lai
+        private EmailSender(IConfiguration configuration)
+        {
+            _configuration = configuration;
+        }
         private EmailSender()
         {
-            sendGridClient = new SendGridClient(Vault.Current.SendGridApiKey);
+            sendGridClient = new SendGridClient(_configuration["SendGridApiKey"]);
             Logger = LogManager.GetLogger(GetType());
         }
         public void Send(EmailItem emailItem)

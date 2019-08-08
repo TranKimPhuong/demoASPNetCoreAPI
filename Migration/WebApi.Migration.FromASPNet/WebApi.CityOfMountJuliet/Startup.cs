@@ -37,24 +37,10 @@ namespace WebApi.CityOfMountJuliet
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            // ko cần này vì ko insert trực tiếp vào DB
-            //services.AddDbContext<dbBloggingKPContext>(options =>
-            //        options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            // cách lấy 1 vài section 
-            //services.Configure<EmailOptions>(Configuration.GetSection("Email"));
-            //services.Configure<KafkaOptions>(Configuration.GetSection("Kafka"));
-
-            /* Sharable Static Properties
-            // giống như xài HttpContext.Current mọi nơi miễn có using System.Web là đc
-            // ASP net core xài IHttpContextAccessor # HttpContext.Current
-            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddTransient<IPrincipal>(
-            provider => provider.GetService<IHttpContextAccessor>().HttpContext.User);
-            */
-            services.AddMvc()
-                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
-                .AddWebApiConventions();
+            // *If* you need access to generic IConfiguration this is **required**
+            services.AddSingleton(Configuration);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -66,11 +52,11 @@ namespace WebApi.CityOfMountJuliet
             }
             else
             {
-                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                // The default HSTS value is 30 days. 
+                // You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
-            //app.UseMiddleware<RequestResponseLoggingMiddleware>();
             app.UseDefaultFiles();
             app.UseStaticFiles();
 
