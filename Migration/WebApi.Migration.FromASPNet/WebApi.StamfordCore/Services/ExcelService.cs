@@ -96,11 +96,11 @@ namespace WebApi.StamfordCore.Services
             int check = 0;
             DataTable selectedTableVendorID = null;
             var rowsVendorID = dtCloned.AsEnumerable()
-                .Where(r => string.IsNullOrEmpty(r.Field<string>("Vendor ID") == true));
+                .Where(r => string.IsNullOrEmpty(r.Field<string>("Vendor ID")) == true);
 
             DataTable selectedTableVendorName = null;
             var rowsVendorName = dtCloned.AsEnumerable()
-               .Where(r => string.IsNullOrEmpty(r.) == true);
+               .Where(r => string.IsNullOrEmpty(r.Field<string>("Name")) == true);
 
             var rowsVendorIDLess9 = dtCloned.AsEnumerable()
                .Where(r => r.Field<string>("Vendor ID").Length < 9);

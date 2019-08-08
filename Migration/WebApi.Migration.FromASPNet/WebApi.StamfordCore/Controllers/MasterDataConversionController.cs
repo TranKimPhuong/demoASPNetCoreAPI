@@ -1,4 +1,5 @@
 ﻿using log4net;
+using Microsoft.AspNetCore.Http.Features;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Collections;
@@ -11,6 +12,7 @@ using System.Threading.Tasks;
 using WebApi.CommonCore.Helper;
 using WebApi.CommonCore.KeyVault;
 using WebApi.CommonCore.Models;
+using WebApi.StamfordCore.Services;
 
 namespace WebApi.StamfordCore.Controllers
 {
@@ -18,6 +20,7 @@ namespace WebApi.StamfordCore.Controllers
     public class MasterDataConversionController : ControllerBase
     {
         static ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly FormOptions _defaultFormOptions = new FormOptions();
 
         [HttpPost]
         public async Task<MessageResponse> Index()
@@ -36,7 +39,8 @@ namespace WebApi.StamfordCore.Controllers
 
               
                 var provider = new MultipartFormDataStreamProvider(root);
-                await Request.Content.ReadAsMultipartAsync(provider);
+
+                await Request.ReadAsMultipartAsync(provider);
 
                 string sitename = string.Empty;
                 int CaseAction = 0;
@@ -130,7 +134,6 @@ namespace WebApi.StamfordCore.Controllers
             string path = string.Empty;
             string StandardFilePath = Path.GetRandomFileName();
 
-
             if (!isGetFromBlob)
             {
                 // This illustrates how to get the file names.
@@ -140,7 +143,7 @@ namespace WebApi.StamfordCore.Controllers
                     package.filename = file.Headers.ContentDisposition.FileName;
                 }
              
-                byte[] FileDecrypted = AESHelper.DescryptAES(File.ReadAllBytes(path), Vault.Current.AESKeyBLOB);
+                byte[] FileDecrypted = AESHelper.DescryptAES(System.IO.File.ReadAllBytes(path), Vault.Current.AESKeyBLOB);
                 package.byteArr = FileDecrypted;
 
             }

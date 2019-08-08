@@ -1,13 +1,22 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Security.Principal;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Options;
+using WebApi.CityOfMountJuliet.Models.Data;
+using WebApi.CityOfMountJuliet.Models.Library;
 
-namespace WebApi.StamfordCore
+namespace WebApi.CityOfMountJuliet
 {
     public class Startup
     {
@@ -28,16 +37,28 @@ namespace WebApi.StamfordCore
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
-            services.AddDbContext<SchoolContext>(options =>
-                    options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
+            // ko cần này vì ko insert trực tiếp vào DB
+            //services.AddDbContext<dbBloggingKPContext>(options =>
+            //        options.UseSqlServer(Configuration.GetConnectionString("ConnectionString")));
 
+            // cách lấy 1 vài section 
+            //services.Configure<EmailOptions>(Configuration.GetSection("Email"));
+            //services.Configure<KafkaOptions>(Configuration.GetSection("Kafka"));
+
+            /* Sharable Static Properties
+            // giống như xài HttpContext.Current mọi nơi miễn có using System.Web là đc
+            // ASP net core xài IHttpContextAccessor # HttpContext.Current
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddTransient<IPrincipal>(
+            provider => provider.GetService<IHttpContextAccessor>().HttpContext.User);
+            */
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddWebApiConventions();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -49,7 +70,10 @@ namespace WebApi.StamfordCore
                 app.UseHsts();
             }
 
-            loggerFactory.AddLog4Net();
+            //app.UseMiddleware<RequestResponseLoggingMiddleware>();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
+
             app.UseHttpsRedirection();
             app.UseMvc();
         }

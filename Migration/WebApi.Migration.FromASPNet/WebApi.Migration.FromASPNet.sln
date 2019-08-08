@@ -3,19 +3,20 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29102.190
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Common", "..\..\..\..\SaaS\PS_ACOM\ACOM_Custom_ForMigration\WebApi.Common\WebApi.Common.csproj", "{27434217-E774-4154-A657-5661C2FEE52A}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Stamford", "..\..\..\..\SaaS\PS_ACOM\ACOM_Custom_ForMigration\WebApi.Stamford\WebApi.Stamford.csproj", "{C0BCCCCA-5E54-4AFF-9E36-5C2382FC234E}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B69618DD-CEFC-4980-9DF8-918B1DA191FA}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\..\SaaS\PS_ACOM\ACOM_Custom_ForMigration\nuget_dev.config = ..\..\..\..\SaaS\PS_ACOM\ACOM_Custom_ForMigration\nuget_dev.config
 		..\..\..\..\SaaS\PS_ACOM\ACOM_Custom_ForMigration\nuget_prod.config = ..\..\..\..\SaaS\PS_ACOM\ACOM_Custom_ForMigration\nuget_prod.config
+		WebApi.CityOfMountJuliet\Services\README.txt = WebApi.CityOfMountJuliet\Services\README.txt
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.StamfordCore", "WebApi.StamfordCore\WebApi.StamfordCore.csproj", "{7975F427-68C7-4994-9E9A-F51E6A724C7A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.StamfordCore", "WebApi.StamfordCore\WebApi.StamfordCore.csproj", "{7975F427-68C7-4994-9E9A-F51E6A724C7A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.CommonCore", "WebApi.CommonCore\WebApi.CommonCore.csproj", "{958A8229-019D-485E-A485-F473F0FED69D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.CommonCore", "WebApi.CommonCore\WebApi.CommonCore.csproj", "{958A8229-019D-485E-A485-F473F0FED69D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebApi.CityOfMountJuliet", "WebApi.CityOfMountJuliet\WebApi.CityOfMountJuliet.csproj", "{F7007007-D900-4450-827C-D0E808599316}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebApi.Test", "WebApi.Test\WebApi.Test.csproj", "{A21B3F62-A874-42FF-B98B-4245A869C69D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,14 +24,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{27434217-E774-4154-A657-5661C2FEE52A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{27434217-E774-4154-A657-5661C2FEE52A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{27434217-E774-4154-A657-5661C2FEE52A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{27434217-E774-4154-A657-5661C2FEE52A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C0BCCCCA-5E54-4AFF-9E36-5C2382FC234E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C0BCCCCA-5E54-4AFF-9E36-5C2382FC234E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C0BCCCCA-5E54-4AFF-9E36-5C2382FC234E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C0BCCCCA-5E54-4AFF-9E36-5C2382FC234E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7975F427-68C7-4994-9E9A-F51E6A724C7A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7975F427-68C7-4994-9E9A-F51E6A724C7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7975F427-68C7-4994-9E9A-F51E6A724C7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -39,6 +32,14 @@ Global
 		{958A8229-019D-485E-A485-F473F0FED69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{958A8229-019D-485E-A485-F473F0FED69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{958A8229-019D-485E-A485-F473F0FED69D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F7007007-D900-4450-827C-D0E808599316}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F7007007-D900-4450-827C-D0E808599316}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F7007007-D900-4450-827C-D0E808599316}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F7007007-D900-4450-827C-D0E808599316}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A21B3F62-A874-42FF-B98B-4245A869C69D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A21B3F62-A874-42FF-B98B-4245A869C69D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A21B3F62-A874-42FF-B98B-4245A869C69D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A21B3F62-A874-42FF-B98B-4245A869C69D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

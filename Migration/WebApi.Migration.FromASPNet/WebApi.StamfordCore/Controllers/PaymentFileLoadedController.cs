@@ -25,7 +25,7 @@ namespace WebApi.Stamford.Controllers
     {
         static ILog Logger = LogManager.GetLogger("Stamford PaymentFileLoaded web hook", typeof(PaymentFileLoadedController));
         [AllowAnonymous]
-        public IActionResult Index([FromUri] string access_token, [FromBody]WebHookRequest request)
+        public IActionResult Index([FromQuery]string access_token, [FromBody]WebHookRequest request)
         {
             var token = ConfigHelper.GetString("PaymentFileLoaded.access_token");
             if (token.ToLowerInvariant() != access_token.ToLowerInvariant())
