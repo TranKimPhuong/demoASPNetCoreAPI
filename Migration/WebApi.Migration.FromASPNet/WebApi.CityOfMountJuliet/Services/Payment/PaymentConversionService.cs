@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using log4net;
+using Microsoft.Extensions.Configuration;
 using WebApi.CityOfMountJuliet.Models.Data.Provider;
 using WebApi.CommonCore.Helper;
 using WebApi.CommonCore.KeyVault;
@@ -12,9 +13,12 @@ namespace WebApi.CityOfMountJuliet.Services.Payment
     {
         private readonly PsTool _psTool;
         private readonly ILog Logger;
+        private readonly IConfiguration _configuration;
+
         internal PaymentConversionService(PsTool psTool)
         {
             _psTool = psTool;
+            //_configuration = configuration;
             Logger = LogManager.GetLogger(typeof(PaymentConversionService));
         }
 
@@ -25,8 +29,8 @@ namespace WebApi.CityOfMountJuliet.Services.Payment
                 return MessageResponse.info(errorMsg);
             try
             {
-                var storageConnString = Vault.Current.StorageConnectionString;
-                var decryptKey = Vault.Current.AESKeyBLOB;
+                var storageConnString = _configuration["StorageConnectionString"];
+                var decryptKey = _configuration["AESKeyBLOB"];
 
                 //download file
                 var downloadResult = DownloadConversionFiles(request, storageConnString, decryptKey);

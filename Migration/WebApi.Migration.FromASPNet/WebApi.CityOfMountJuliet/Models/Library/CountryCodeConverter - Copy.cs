@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using System;
 using System.Globalization;
 using System.IO;
@@ -23,9 +22,9 @@ namespace WebApi.CityOfMountJuliet.Models.Library
 
         #region SingleTon
         private static Lazy<CountryCodeConverter> lazy;
-        private CountryCodeConverter(IHostingEnvironment _hostingEnvironment)
+        private CountryCodeConverter(IHttpContextAccessor httpContextAccessor)
         {
-            var path = _hostingEnvironment.ContentRootPath + "/XMLs/CountryCode.xml";
+            var path = httpContextAccessor.HttpContext.Request.Path.Value + "/XMLs/CountryCode.xml";
             if (!File.Exists(path))
             {
                 throw new Exception("CountryCodeConverter: Can not find country code dictionary file.");
@@ -37,11 +36,11 @@ namespace WebApi.CityOfMountJuliet.Models.Library
             }
         }
 
-        public static void Init(IHostingEnvironment _hostingEnvironment)
+        public static void Init(IHttpContextAccessor httpContextAccessor)
         {
             if (lazy == null)
             {
-                lazy = new Lazy<CountryCodeConverter>(() => new CountryCodeConverter(_hostingEnvironment));
+                lazy = new Lazy<CountryCodeConverter>(() => new CountryCodeConverter(httpContextAccessor));
             }
         }
 

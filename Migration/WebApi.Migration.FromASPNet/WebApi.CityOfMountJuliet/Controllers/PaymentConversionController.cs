@@ -1,6 +1,7 @@
 ﻿using WebApi.CommonCore.Models;
 using Microsoft.AspNetCore.Mvc;
 using WebApi.CityOfMountJuliet.Services.Payment;
+using Microsoft.Extensions.Configuration;
 
 namespace WebApi.CityOfMountJuliet.Controllers
 {
@@ -8,11 +9,14 @@ namespace WebApi.CityOfMountJuliet.Controllers
     [ApiController]
     public class PaymentConversionController : ControllerBase
     {
+        //IConfiguration con;
         // POST: api/PaymentConversion/Import
         [HttpPost]
         [Route("Import")]
-        public MessageResponse PaymentImport([FromBody]ConversionRequest request)
+        //ko cho truyền IConfiguration configuration chổ này??????????????????????
+        public MessageResponse PaymentImport([FromForm]ConversionRequest request)
         {
+
             PaymentConversionService service = new PaymentConversionService(new PaymentPsTool());
             return service.ProcessRequest(request);
         }

@@ -12,19 +12,12 @@ namespace WebApi.CityOfMountJuliet.Controllers
     [ApiController]
     public class MasterDataConversionController : ControllerBase
     {
-        private IConfiguration _configuration { get; set; }
-        public MasterDataConversionController(IConfiguration configuration)
-        {
-            _configuration = configuration;
-
-        }
         //POST: api/MasterDataConversion/Import/
         [HttpPost]
-        public IActionResult Import([FromForm] InputFileProperties inputFileProperties)
+        public MessageResponse Import(InputFileProperties inputFileProperties, IConfiguration configuration)
         {
-            var service = new MasterDataConversionService(new MasterDataPsTool(), _configuration);
-            service.ProcessHttpRequest(inputFileProperties);
-            return Ok();
+            var service = new MasterDataConversionService(new MasterDataPsTool(), configuration);
+            return service.ProcessHttpRequest(inputFileProperties);
         }
     }
 }

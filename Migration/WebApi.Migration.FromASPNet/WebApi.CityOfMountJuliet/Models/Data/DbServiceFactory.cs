@@ -1,4 +1,5 @@
-﻿using WebApi.CommonCore.Helper;
+﻿using Microsoft.Extensions.Configuration;
+using WebApi.CommonCore.Helper;
 using WebApi.CommonCore.KeyVault;
 
 namespace WebApi.CityOfMountJuliet.Models.Data

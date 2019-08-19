@@ -6,11 +6,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="KeyVault\Vault.cs" />
-    <Compile Remove="KeyVault\VaultBase.cs" />
-  </ItemGroup>
-
-  <ItemGroup>
     <PackageReference Include="AspNetCore.KeyVault" Version="1.0.6" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Abstractions" Version="2.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />

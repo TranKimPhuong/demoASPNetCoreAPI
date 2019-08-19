@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using System;
 
 namespace WebApi.CommonCore.Models
@@ -19,5 +20,7 @@ namespace WebApi.CommonCore.Models
 
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public String prefixPayeeID { get; set; }
+
+        public IFormFile File { get; set; }
     }
 }

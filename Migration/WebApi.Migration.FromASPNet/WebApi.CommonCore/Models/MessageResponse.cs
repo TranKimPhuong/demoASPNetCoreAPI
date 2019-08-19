@@ -30,10 +30,12 @@ namespace WebApi.CommonCore.Models
 
         public static MessageResponse ok(Object dataOK)
         {
-            MessageResponse result = new MessageResponse();
-            result.data = dataOK;
-            result.code = (int)HttpStatusCode.OK;
-            
+            MessageResponse result = new MessageResponse
+            {
+                data = dataOK,
+                code = (int)HttpStatusCode.OK
+            };
+
             return result;
         }
 
@@ -45,9 +47,11 @@ namespace WebApi.CommonCore.Models
 
         public static MessageResponse info(List<string> msgBadRequest)
         {
-            MessageResponse result = new MessageResponse();
-            result.messages = msgBadRequest;
-            result.code = (int)HttpStatusCode.BadRequest;
+            MessageResponse result = new MessageResponse
+            {
+                messages = msgBadRequest,
+                code = (int)HttpStatusCode.BadRequest
+            };
 
             return result;
         }
@@ -59,9 +63,11 @@ namespace WebApi.CommonCore.Models
 
         public static MessageResponse error(List<string> msgError)
         {
-            MessageResponse result = new MessageResponse();
-            result.messages = msgError;
-            result.code = (int)HttpStatusCode.InternalServerError;
+            MessageResponse result = new MessageResponse
+            {
+                messages = msgError,
+                code = (int)HttpStatusCode.InternalServerError
+            };
 
             return result;
         }

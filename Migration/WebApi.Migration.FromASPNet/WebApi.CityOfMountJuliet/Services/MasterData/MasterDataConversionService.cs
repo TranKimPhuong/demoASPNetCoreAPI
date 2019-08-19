@@ -3,15 +3,13 @@ using System.IO;
 using System.Linq;
 
 using System.Reflection;
-using System.Threading.Tasks;
+using System.Text;
 using log4net;
 using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using WebApi.CityOfMountJuliet.Models.Data.Provider;
 using WebApi.CityOfMountJuliet.Models.Library;
 using WebApi.CommonCore.Helper;
-using WebApi.CommonCore.KeyVault;
 using WebApi.CommonCore.Models;
 
 namespace WebApi.CityOfMountJuliet.Services.MasterData
@@ -20,20 +18,20 @@ namespace WebApi.CityOfMountJuliet.Services.MasterData
     {
         static ILog Logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
         private readonly PsTool _psTool;
-        private IConfiguration _configuration { get; set; }
+        private readonly IConfiguration _configuration;
 
         internal MasterDataConversionService(PsTool psTool, IConfiguration configuration)
         {
             _psTool = psTool;
             _configuration = configuration;
         }
-        internal ActionResult<string> ProcessHttpRequest(InputFileProperties inputFile)
+        internal MessageResponse ProcessHttpRequest(InputFileProperties inputFile)
         {
             try
             {
                 if (inputFile == null)
                 {
-                    return "File Not Found";
+                    return MessageResponse.error("File Not Found");
                 }
 
                 var inputContent = GetInputFileContentAndLogRequest(inputFile);
@@ -42,30 +40,38 @@ namespace WebApi.CityOfMountJuliet.Services.MasterData
 
                 var errorList = _psTool.GetErrors();
                 if (errorList.Any())
-                    return errorList.ToString();
+                    return MessageResponse.error(errorList);
 
                 var encryptedData = AESHelper.EncryptAES(sb.ToString(), _configuration["AESKeyBLOB"]);
+                return MessageResponse.ok(encryptedData);
             }
             catch (Exception e)
             {
                 Logger.Error(e);
-                return e.Message;
+                return MessageResponse.error(e.Message);
             }
-
-            return "OK";
         }
         private byte[] GetInputFileContentAndLogRequest(InputFileProperties inputFile)
         {
             // Show all the key-value pairs.
-            Logger.Info("CaseAction: " + inputFile.CaseAction);
-            Logger.Info("VendorCreate[]: " + inputFile.VendorCreate);
-            Logger.Info("AddressCreate[]: " + inputFile.AddressCreate);
-            Logger.Info("VendorUpdate[]: " + inputFile.VendorUpdate);
-            Logger.Info("AddressUpdate[]: " + inputFile.AddressUpdate);
-            Logger.Info("containerName: " + inputFile.ContainerName);
-            Logger.Info("blobName: " + inputFile.BlobName);
-            Logger.Info("decrypt: " + inputFile.Decrypt);
-            Logger.Info("SiteName: " + inputFile.SiteName);
+            if (!string.IsNullOrEmpty(inputFile.CaseAction))
+                Logger.Info("CaseAction: " + inputFile.CaseAction);
+            //if (!string.IsNullOrEmpty(inputFile.VendorCreate))
+            //    Logger.Info("VendorCreate[]: " + inputFile.VendorCreate);
+            //if (!string.IsNullOrEmpty(inputFile.AddressCreate))
+            //    Logger.Info("AddressCreate[]: " + inputFile.AddressCreate);
+            //if (!string.IsNullOrEmpty(inputFile.VendorUpdate))
+            //    Logger.Info("VendorUpdate[]: " + inputFile.VendorUpdate);
+            //if (!string.IsNullOrEmpty(inputFile.AddressUpdate))
+            //    Logger.Info("AddressUpdate[]: " + inputFile.AddressUpdate);
+            if (!string.IsNullOrEmpty(inputFile.ContainerName))
+                Logger.Info("containerName: " + inputFile.ContainerName);
+            if (!string.IsNullOrEmpty(inputFile.BlobName))
+                Logger.Info("blobName: " + inputFile.BlobName);
+            if (!string.IsNullOrEmpty(inputFile.Decrypt))
+                Logger.Info("decrypt: " + inputFile.Decrypt);
+            if (!string.IsNullOrEmpty(inputFile.SiteName))
+                Logger.Info("SiteName: " + inputFile.SiteName);
             var isGetFromBlob = string.IsNullOrEmpty(inputFile.isGetFromBlob) ? false : bool.Parse(inputFile.isGetFromBlob);
             Logger.Info("isGetFromBlob : " + inputFile.isGetFromBlob);
 
@@ -87,15 +93,19 @@ namespace WebApi.CityOfMountJuliet.Services.MasterData
 
                 return BlobHelper.DownloadFileToArrayByte(storageSharedConnectionString, containerName, blobName, decryptKey);
             }
+
+            Encoding.RegisterProvider(CodePagesEncodingProvider.Instance);
             byte[] fileContent = null;
 
             using (var ms = new MemoryStream())
             {
-                file.CopyTo(ms);
+                file.CopyTo(ms);             
                 fileContent = ms.ToArray();
             }
 
+            //Issue: ko decrypt đc, input file ko phải complete block 
             return AESHelper.DescryptAES(fileContent, decryptKey);
+            //return fileContent;
         }
     }
 }

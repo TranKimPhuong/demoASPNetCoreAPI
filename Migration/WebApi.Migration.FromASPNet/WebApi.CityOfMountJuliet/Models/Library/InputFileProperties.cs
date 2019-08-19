@@ -8,13 +8,12 @@ namespace WebApi.CityOfMountJuliet.Models.Library
 {
     public class InputFileProperties
     {
-        public string userId { get; set; }
         public IFormFile File { get; set; }
         public string CaseAction { get; set; }
-        public string VendorCreate { get; set; }
-        public string AddressCreate { get; set; }
-        public string VendorUpdate { get; set; }
-        public string AddressUpdate { get; set; }
+        //public string VendorCreate { get; set; }
+        //public string AddressCreate { get; set; }
+        //public string VendorUpdate { get; set; }
+        //public string AddressUpdate { get; set; }
         public string ContainerName { get; set; }
         public string BlobName { get; set; }
         public string Decrypt { get; set; }
